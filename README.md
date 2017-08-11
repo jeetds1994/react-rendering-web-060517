@@ -26,7 +26,7 @@ These methods always get called in the same order and the `render()` method whic
 3. `componentWillUpdate(nextProps, nextState)`
 
 4. `render()` (can access props and state via `this.props` and `this.state` - previous props are no longer available)
-
+ 
 5. `componentDidUpdate(prevProps, prevState)` (can still access current props and state via `this.props` and `this.state` and this is the last time previous props and state will be available as they are passed into the function).
 
 ### `componentWillReceiveProps(nextProps)`
@@ -53,7 +53,7 @@ shouldComponentUpdate(nextProps, nextState) {
 ```
 
 For example, the above code means that the React component gets re-rendered when `myImportantValue` has changed. A word of caution though: you might think it'd be a good idea to use the `shouldComponentUpdate` function to only re-render the component if *any* of the props have changed and avoid *all* redundant re-renders, e.g. if `this.props !== nextProps`. However, because `props` and `nextProps` are both JavaScript objects, this comparison will always return `true`, that is `{} === {}` is never `true` in JavaScript (object equality is one of the many, many JavaScript quirks out there...
-  
+
 The reasons behind it are a bit too advanced to explain at this stage, it's enough just to know about it. Further reading [here](http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html).
 
 Coming back to our theater metaphor, imagine a play is being carried out over and over. The actors have a script they read from and generally don't deviate from it. However, suppose the director decides that a new version of the script is in order - maybe he felt the audience didn't like a scene, or maybe he just fancied an experiment, either way, the actors have a new script and have to carry out the play in a slightly different way. As a lifecycle method, this could be denoted like this:
